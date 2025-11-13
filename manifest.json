@@ -1,0 +1,24 @@
+{
+  "name": "3rdEye - Visual Aid Assistant",
+  "short_name": "3rdEye",
+  "description": "AI-powered visual assistance app for visually impaired users - Seeing beyond limits",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#56066C",
+  "theme_color": "#56066C",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "permissions": ["camera", "microphone", "geolocation"],
+  "features": ["camera", "microphone", "geolocation"]
+}

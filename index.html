@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Aid Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2196F3">
+    
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places"></script>
+    
+    <!-- Speech Recognition -->
+    <script src="https://cdn.jsdelivr.net/npm/annyang@2.6.1/dist/annyang.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header with voice status -->
+        <header class="app-header">
+            <h1>Visual Aid Assistant</h1>
+            <div class="voice-status" id="voiceStatus">
+                <span class="status-indicator"></span>
+                <span class="status-text">Voice Ready</span>
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="ocr" id="ocrTab">
+                <span class="tab-icon">📷</span>
+                <span class="tab-text">OCR</span>
+            </button>
+            <button class="tab-btn" data-tab="navigation" id="navigationTab">
+                <span class="tab-icon">🗺️</span>
+                <span class="tab-text">Navigation</span>
+            </button>
+            <button class="tab-btn" data-tab="chat" id="chatTab">
+                <span class="tab-icon">💬</span>
+                <span class="tab-text">Chat</span>
+            </button>
+        </nav>
+
+        <!-- Tab Content -->
+        <main class="tab-content">
+            <!-- OCR Tab -->
+            <div class="tab-panel active" id="ocrPanel">
+                <div class="feature-container">
+                    <h2>Text Recognition</h2>
+                    <div class="camera-container">
+                        <video id="cameraFeed" autoplay playsinline></video>
+                        <canvas id="ocrCanvas" style="display: none;"></canvas>
+                    </div>
+                    <div class="controls">
+                        <button class="primary-btn" id="captureBtn">Capture & Read Text</button>
+                        <button class="secondary-btn" id="toggleCameraBtn">Switch Camera</button>
+                    </div>
+                    <div class="result-container">
+                        <h3>Detected Text:</h3>
+                        <div id="ocrResult" class="result-text"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Tab -->
+            <div class="tab-panel" id="navigationPanel">
+                <div class="feature-container">
+                    <h2>Path Navigation</h2>
+                    <div class="location-input">
+                        <input type="text" id="destinationInput" placeholder="Where do you want to go?">
+                        <button class="primary-btn" id="findRouteBtn">Find Route</button>
+                    </div>
+                    <div class="map-container">
+                        <div id="map"></div>
+                    </div>
+                    <div class="navigation-info">
+                        <div id="routeInstructions"></div>
+                        <button class="secondary-btn" id="startNavigationBtn" style="display: none;">Start Navigation</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Tab -->
+            <div class="tab-panel" id="chatPanel">
+                <div class="feature-container">
+                    <h2>Voice Assistant</h2>
+                    <div class="chat-container">
+                        <div id="chatMessages" class="chat-messages"></div>
+                    </div>
+                    <div class="chat-controls">
+                        <button class="voice-btn" id="voiceBtn">
+                            <span class="voice-icon">🎤</span>
+                            <span class="voice-text">Hold to Speak</span>
+                        </button>
+                        <div class="chat-input-container">
+                            <input type="text" id="chatInput" placeholder="Type your message...">
+                            <button class="send-btn" id="sendBtn">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Voice Command Feedback -->
+        <div class="voice-feedback" id="voiceFeedback">
+            <div class="feedback-content">
+                <span class="feedback-text" id="feedbackText"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/ocr.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/voice.js"></script>
+</body>
+</html>
