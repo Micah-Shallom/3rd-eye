@@ -59,7 +59,7 @@ export class ElevenLabsService {
 
   constructor(apiKey: string, geminiApiKey?: string) {
     this.apiKey = apiKey
-    this.geminiApiKey = geminiApiKey || "AIzaSyBtaDmZ1_uShPiHWssHnISzw3Arg9BdulA"
+    this.geminiApiKey = geminiApiKey || ""
   }
 
   public getIsSpeaking(): boolean {

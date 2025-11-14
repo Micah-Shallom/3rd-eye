@@ -32,8 +32,8 @@ export default function ThirdEyeApp() {
   const navigationComponentRef = useRef<any>(null)
   const speechToTextComponentRef = useRef<any>(null)
 
-  const GEMINI_API_KEY = ""
-  const ELEVENLABS_API_KEY = ""
+  const GEMINI_API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || ""
+  const ELEVENLABS_API_KEY = process.env.NEXT_PUBLIC_ELEVENLABS_API_KEY || ""
 
   useEffect(() => {
     if (typeof window !== "undefined") {
